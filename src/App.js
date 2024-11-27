@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import ChatBot from "./components/ChatBot";
+import Customizer from "./components/Customizer";
+import "./App.css";
 
-function App() {
+const App = () => {
+  const [customStyles, setCustomStyles] = useState({
+    buttonIcon: "➤",
+    borderColor: "#000000",
+    borderRadius: "5px",
+    titleBgColor: "#000000",
+    botBubbleBgColor: "#e5e5e5",
+    botTextColor: "#000000",
+    userBubbleBgColor: "#0078d7",
+    userTextColor: "#ffffff",
+    font: "Arial",
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-container">
+      <div className="customizer-pane">
+        <Customizer styles={customStyles} setStyles={setCustomStyles} />
+      </div>
+      <div className="chatbot-pane">
+        <ChatBot styles={customStyles} />
+      </div>
     </div>
   );
-}
+};
 
 export default App;
